@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/guessing-dino/browser",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

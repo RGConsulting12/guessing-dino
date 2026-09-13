@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: 'Trebuchet MS', Inter, system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(74, 222, 128, 0.16), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(234, 179, 8, 0.12), transparent 40%),
+    linear-gradient(180deg, #0f172a 0%, #052e16 100%);
+  color: #f8fafc;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}

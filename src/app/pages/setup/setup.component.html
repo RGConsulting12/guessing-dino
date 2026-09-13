@@ -1,0 +1,45 @@
+<section class="setup-card">
+  <p class="eyebrow">Guessing Dino</p>
+  <h1>Start your adventure</h1>
+  <p class="lede">Pick a difficulty and name. Progress stays on this device only.</p>
+
+  <form (ngSubmit)="start()" class="setup-form">
+    <label>
+      Your name
+      <input
+        type="text"
+        name="displayName"
+        [(ngModel)]="displayName"
+        maxlength="24"
+        placeholder="Explorer"
+        autocomplete="nickname"
+      />
+    </label>
+
+    <fieldset>
+      <legend>Difficulty</legend>
+      <div class="difficulty-grid">
+        @for (option of difficultyOptions; track option.id) {
+          <label class="difficulty-card" [class.selected]="difficulty === option.id">
+            <input
+              type="radio"
+              name="difficulty"
+              [value]="option.id"
+              [(ngModel)]="difficulty"
+            />
+            <strong>{{ option.label }}</strong>
+            <span class="ages">{{ option.ages }}</span>
+            <span class="detail">{{ option.detail }}</span>
+          </label>
+        }
+      </div>
+    </fieldset>
+
+    <label class="toggle-row">
+      <input type="checkbox" [(ngModel)]="voiceEnabled" name="voiceEnabled" />
+      <span>Read descriptions aloud (OpenAI voice)</span>
+    </label>
+
+    <button type="submit" class="primary">Let's play!</button>
+  </form>
+</section>

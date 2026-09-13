@@ -1,0 +1,66 @@
+@if (challenge$ | async; as challenge) {
+  @if (challenge) {
+    <section class="play-shell">
+      <header class="top-bar">
+        <a routerLink="/">← Home</a>
+        @if (activeProfile$ | async; as profile) {
+          <span>⭐ {{ profile.progress.stars }}</span>
+        }
+      </header>
+
+      <article class="dino-card">
+        <div class="dino-head">
+          <span class="emoji">{{ challenge.emoji }}</span>
+          <div>
+            <p class="eyebrow">Who am I?</p>
+            <h1>Read the clue</h1>
+          </div>
+        </div>
+
+        <p class="description">{{ challenge.description }}</p>
+
+        <div class="voice-row">
+          <button type="button" class="chip" [disabled]="speaking" (click)="readAloud(challenge.description)">
+            {{ speaking ? 'Reading…' : '🔊 Read aloud' }}
+          </button>
+          @if (speechError) {
+            <span class="speech-error">{{ speechError }}</span>
+          }
+        </div>
+
+        <div class="choices">
+          @for (choice of choices; track choice) {
+            <button
+              type="button"
+              class="choice"
+              [class.correct]="success && choice === challenge.name"
+              [disabled]="success && choice !== challenge.name"
+              (click)="guess(choice, challenge.name, challenge.id)"
+            >
+              {{ choice }}
+            </button>
+          }
+        </div>
+
+        @if (feedback) {
+          <p class="feedback" [class.success]="success">{{ feedback }}</p>
+        }
+
+        @if (success) {
+          <div class="next-row">
+            @if (nextId(challenge.id); as next) {
+              <a class="primary" [routerLink]="['/play', next]">Next dinosaur →</a>
+            } @else {
+              <a class="primary" routerLink="/">You finished this trail! 🎉</a>
+            }
+          </div>
+        }
+      </article>
+    </section>
+  } @else {
+    <section class="play-shell">
+      <p>Dinosaur not found.</p>
+      <a routerLink="/">Back home</a>
+    </section>
+  }
+}
