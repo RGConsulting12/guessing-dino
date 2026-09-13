@@ -4,7 +4,6 @@ import {
   challengesForDifficulty,
   firstChallengeForDifficulty,
   getChallenge,
-  nextChallenge,
 } from './curriculum';
 import {
   ACTIVE_PROFILE_KEY,
