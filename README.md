@@ -54,6 +54,15 @@ npx vercel --prod
 
 Or connect **RGConsulting12/guessing-dino** in the Vercel dashboard for automatic deploys on push to `main`.
 
+**Live:** [guessing-dino.vercel.app](https://guessing-dino.vercel.app)
+
+## Sounds & celebration
+
+- Correct guess → success chime + confetti burst
+- Wrong guess → silly boop + dino-themed message
+- Finish a difficulty trail → fanfare
+- Toggle **Sounds** on the home screen (or at setup)
+
 ## Privacy
 
 - No accounts, emails, or server-side profile storage.
