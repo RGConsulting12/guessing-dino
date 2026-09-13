@@ -9,7 +9,11 @@ export type DinoChallenge = {
   /** Kid-friendly description drawn from museum-grade public sources. */
   description: string;
   distractorNames: [string, string, string];
+  imageUrl: string;
+  imageCredit: string;
 };
+
+export type DinoChallengeDraft = Omit<DinoChallenge, 'imageUrl' | 'imageCredit'>;
 
 export type Level = {
   id: string;

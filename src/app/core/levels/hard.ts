@@ -1,6 +1,6 @@
-import { DinoChallenge } from '../models';
+import { DinoChallengeDraft } from '../models';
 
-export const hardLevel1: DinoChallenge[] = [
+export const hardLevel1: DinoChallengeDraft[] = [
   {
     id: 'hard-utahraptor',
     difficulty: 'hard',
@@ -43,7 +43,7 @@ export const hardLevel1: DinoChallenge[] = [
   },
 ];
 
-export const hardLevel2: DinoChallenge[] = [
+export const hardLevel2: DinoChallengeDraft[] = [
   {
     id: 'hard-archaeopteryx',
     difficulty: 'hard',
@@ -86,7 +86,7 @@ export const hardLevel2: DinoChallenge[] = [
   },
 ];
 
-export const hardLevel3: DinoChallenge[] = [
+export const hardLevel3: DinoChallengeDraft[] = [
   {
     id: 'hard-gallimimus',
     difficulty: 'hard',

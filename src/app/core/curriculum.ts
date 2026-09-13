@@ -1,3 +1,4 @@
+import { attachDinoImages } from './dino-images';
 import {
   easyLevel1,
   easyLevel2,
@@ -23,7 +24,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Stars',
     description: 'Meet the most famous dinosaurs.',
     emoji: '⭐',
-    challenges: easyLevel1,
+    challenges: easyLevel1.map(attachDinoImages),
   },
   {
     id: 'easy-explorers',
@@ -32,7 +33,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Explore',
     description: 'Armor, crests, and speedy hunters.',
     emoji: '🧭',
-    challenges: easyLevel2,
+    challenges: easyLevel2.map(attachDinoImages),
   },
   {
     id: 'easy-legends',
@@ -41,7 +42,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Legends',
     description: 'Finish the easy trail with fan favorites.',
     emoji: '🏆',
-    challenges: easyLevel3,
+    challenges: easyLevel3.map(attachDinoImages),
   },
   {
     id: 'medium-longnecks',
@@ -50,7 +51,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Horns',
     description: 'Compare look-alike plant-eaters.',
     emoji: '🦴',
-    challenges: mediumLevel1,
+    challenges: mediumLevel1.map(attachDinoImages),
   },
   {
     id: 'medium-hunters',
@@ -59,7 +60,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Hunters',
     description: 'Meat-eaters from around the world.',
     emoji: '🌍',
-    challenges: mediumLevel2,
+    challenges: mediumLevel2.map(attachDinoImages),
   },
   {
     id: 'medium-duckbills',
@@ -68,7 +69,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Duckbills',
     description: 'Crests, herds, and giant claws.',
     emoji: '🦆',
-    challenges: mediumLevel3,
+    challenges: mediumLevel3.map(attachDinoImages),
   },
   {
     id: 'hard-claws',
@@ -77,7 +78,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Claws',
     description: 'Specialized predators and fish-eaters.',
     emoji: '🗡️',
-    challenges: hardLevel1,
+    challenges: hardLevel1.map(attachDinoImages),
   },
   {
     id: 'hard-feathers',
@@ -86,7 +87,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Feathers',
     description: 'Dinosaurs close to the first birds.',
     emoji: '🪶',
-    challenges: hardLevel2,
+    challenges: hardLevel2.map(attachDinoImages),
   },
   {
     id: 'hard-speed',
@@ -95,7 +96,7 @@ export const levels: Level[] = [
     ribbonTitle: 'Speed',
     description: 'Runners, spikes, and record-breaking skulls.',
     emoji: '💨',
-    challenges: hardLevel3,
+    challenges: hardLevel3.map(attachDinoImages),
   },
 ];
 

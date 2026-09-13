@@ -1,6 +1,6 @@
-import { DinoChallenge } from '../models';
+import { DinoChallengeDraft } from '../models';
 
-export const mediumLevel1: DinoChallenge[] = [
+export const mediumLevel1: DinoChallengeDraft[] = [
   {
     id: 'medium-apatosaurus',
     difficulty: 'medium',
@@ -43,7 +43,7 @@ export const mediumLevel1: DinoChallenge[] = [
   },
 ];
 
-export const mediumLevel2: DinoChallenge[] = [
+export const mediumLevel2: DinoChallengeDraft[] = [
   {
     id: 'medium-deinonychus',
     difficulty: 'medium',
@@ -86,7 +86,7 @@ export const mediumLevel2: DinoChallenge[] = [
   },
 ];
 
-export const mediumLevel3: DinoChallenge[] = [
+export const mediumLevel3: DinoChallengeDraft[] = [
   {
     id: 'medium-edmontosaurus',
     difficulty: 'medium',

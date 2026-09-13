@@ -19,6 +19,7 @@ function seeded(seed: number): () => number {
 }
 
 type ConfettiBit = {
+  trackId: string;
   id: number;
   left: number;
   delay: number;
@@ -47,6 +48,7 @@ export class ConfettiBurstComponent implements OnChanges {
 
     const random = seeded(this.burstKey);
     this.bits = Array.from({ length: 48 }, (_, id) => ({
+      trackId: `${this.burstKey}-${id}`,
       id,
       left: random() * 100,
       delay: random() * 0.25,

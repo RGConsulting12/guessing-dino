@@ -1,5 +1,7 @@
 @if (confettiKey > 0) {
-  <app-confetti-burst [burstKey]="confettiKey" />
+  @for (key of [confettiKey]; track key) {
+    <app-confetti-burst [burstKey]="key" />
+  }
 }
 
 @if (challenge$ | async; as challenge) {
@@ -12,60 +14,82 @@
         }
       </header>
 
-      <article class="dino-card" [class.celebrate]="success">
-        <div class="dino-head">
-          <span class="emoji" [class.bounce]="success">{{ challenge.emoji }}</span>
-          <div>
-            <p class="eyebrow">Who am I?</p>
-            <h1>Read the clue</h1>
-          </div>
-        </div>
+      <div class="flip-scene" [class.is-flipped]="success">
+        <article class="flip-card">
+          <div class="flip-face flip-front">
+            <div class="dino-head">
+              <span class="emoji">{{ challenge.emoji }}</span>
+              <div>
+                <p class="eyebrow">Who am I?</p>
+                <h1>Read the clue</h1>
+              </div>
+            </div>
 
-        <p class="description">{{ challenge.description }}</p>
+            <p class="description">{{ challenge.description }}</p>
 
-        <div class="voice-row">
-          <button type="button" class="chip" [disabled]="speaking" (click)="readAloud(challenge.description)">
-            {{ speaking ? 'Reading…' : '🔊 Read aloud' }}
-          </button>
-          @if (speechError) {
-            <span class="speech-error">{{ speechError }}</span>
-          }
-        </div>
+            <div class="voice-row">
+              <button
+                type="button"
+                class="chip"
+                [disabled]="speaking || success"
+                (click)="readAloud(challenge.description)"
+              >
+                {{ speaking ? 'Reading…' : '🔊 Read aloud' }}
+              </button>
+              @if (speechError) {
+                <span class="speech-error">{{ speechError }}</span>
+              }
+            </div>
 
-        <div class="choices">
-          @for (choice of choices; track choice) {
-            <button
-              type="button"
-              class="choice"
-              [class.correct]="success && choice === challenge.name"
-              [class.wobble]="!success && sillyFace && feedback"
-              [disabled]="success && choice !== challenge.name"
-              (click)="guess(choice, challenge.name, challenge.id)"
-            >
-              {{ choice }}
-            </button>
-          }
-        </div>
+            <div class="choices">
+              @for (choice of choices; track choice) {
+                <button
+                  type="button"
+                  class="choice"
+                  [class.wobble]="!success && sillyFace && feedback"
+                  [disabled]="success"
+                  (click)="guess(choice, challenge.name, challenge.id)"
+                >
+                  {{ choice }}
+                </button>
+              }
+            </div>
 
-        @if (feedback) {
-          <p class="feedback" [class.success]="success" [class.silly]="!success">
-            @if (!success && sillyFace) {
-              <span class="silly-face">{{ sillyFace }}</span>
-            }
-            {{ feedback }}
-          </p>
-        }
-
-        @if (success) {
-          <div class="next-row">
-            @if (nextId(challenge.id); as next) {
-              <a class="primary bounce-cta" [routerLink]="['/play', next]">Next dinosaur →</a>
-            } @else {
-              <a class="primary bounce-cta" routerLink="/">You finished this trail! 🎉</a>
+            @if (feedback && !success) {
+              <p class="feedback silly">
+                @if (sillyFace) {
+                  <span class="silly-face">{{ sillyFace }}</span>
+                }
+                {{ feedback }}
+              </p>
             }
           </div>
-        }
-      </article>
+
+          <div class="flip-face flip-back">
+            <p class="eyebrow">You found</p>
+            <h2>{{ challenge.name }}</h2>
+            <div class="dino-photo-wrap">
+              <img
+                class="dino-photo"
+                [src]="challenge.imageUrl"
+                [alt]="challenge.name"
+                loading="lazy"
+              />
+            </div>
+            <p class="photo-credit">{{ challenge.imageCredit }}</p>
+            @if (feedback) {
+              <p class="feedback success">{{ feedback }}</p>
+            }
+            <div class="next-row">
+              @if (nextId(challenge.id); as next) {
+                <a class="primary bounce-cta" [routerLink]="['/play', next]">Next dinosaur →</a>
+              } @else {
+                <a class="primary bounce-cta" routerLink="/">You finished this trail! 🎉</a>
+              }
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
   } @else {
     <section class="play-shell">

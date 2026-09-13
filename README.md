@@ -17,7 +17,9 @@ A kid-friendly dinosaur guessing game for ages 4–10. Read a museum-style clue,
 | Medium | 3 | 12 trickier species |
 | Hard | 3 | 12 advanced species |
 
-Descriptions are written for kids using publicly known facts aligned with sources such as the **Smithsonian National Museum of Natural History** and other major natural history museums.
+Descriptions are written for kids using publicly known facts aligned with sources such as the **Smithsonian National Museum of Natural History** and other major natural history museums. Dinosaur photos are bundled from **Wikipedia / Wikimedia Commons** (museum fossils and mounts).
+
+To refresh images: `bash scripts/download-dino-images.sh`
 
 ## Local development
 

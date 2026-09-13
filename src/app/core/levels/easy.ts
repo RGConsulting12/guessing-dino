@@ -1,7 +1,7 @@
-import { DinoChallenge } from '../models';
+import { DinoChallengeDraft } from '../models';
 
 /** Level 1 — superstar dinosaurs (Smithsonian / AMNH public fact sheets). */
-export const easyLevel1: DinoChallenge[] = [
+export const easyLevel1: DinoChallengeDraft[] = [
   {
     id: 'easy-trex',
     difficulty: 'easy',
@@ -45,7 +45,7 @@ export const easyLevel1: DinoChallenge[] = [
 ];
 
 /** Level 2 — more famous plant-eaters and hunters. */
-export const easyLevel2: DinoChallenge[] = [
+export const easyLevel2: DinoChallengeDraft[] = [
   {
     id: 'easy-velociraptor',
     difficulty: 'easy',
@@ -89,7 +89,7 @@ export const easyLevel2: DinoChallenge[] = [
 ];
 
 /** Level 3 — finish easy track. */
-export const easyLevel3: DinoChallenge[] = [
+export const easyLevel3: DinoChallengeDraft[] = [
   {
     id: 'easy-spinosaurus',
     difficulty: 'easy',
