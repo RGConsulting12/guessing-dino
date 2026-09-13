@@ -1,3 +1,7 @@
+@if (confettiKey > 0) {
+  <app-confetti-burst [burstKey]="confettiKey" />
+}
+
 @if (challenge$ | async; as challenge) {
   @if (challenge) {
     <section class="play-shell">
@@ -8,9 +12,9 @@
         }
       </header>
 
-      <article class="dino-card">
+      <article class="dino-card" [class.celebrate]="success">
         <div class="dino-head">
-          <span class="emoji">{{ challenge.emoji }}</span>
+          <span class="emoji" [class.bounce]="success">{{ challenge.emoji }}</span>
           <div>
             <p class="eyebrow">Who am I?</p>
             <h1>Read the clue</h1>
@@ -34,6 +38,7 @@
               type="button"
               class="choice"
               [class.correct]="success && choice === challenge.name"
+              [class.wobble]="!success && sillyFace && feedback"
               [disabled]="success && choice !== challenge.name"
               (click)="guess(choice, challenge.name, challenge.id)"
             >
@@ -43,15 +48,20 @@
         </div>
 
         @if (feedback) {
-          <p class="feedback" [class.success]="success">{{ feedback }}</p>
+          <p class="feedback" [class.success]="success" [class.silly]="!success">
+            @if (!success && sillyFace) {
+              <span class="silly-face">{{ sillyFace }}</span>
+            }
+            {{ feedback }}
+          </p>
         }
 
         @if (success) {
           <div class="next-row">
             @if (nextId(challenge.id); as next) {
-              <a class="primary" [routerLink]="['/play', next]">Next dinosaur →</a>
+              <a class="primary bounce-cta" [routerLink]="['/play', next]">Next dinosaur →</a>
             } @else {
-              <a class="primary" routerLink="/">You finished this trail! 🎉</a>
+              <a class="primary bounce-cta" routerLink="/">You finished this trail! 🎉</a>
             }
           </div>
         }

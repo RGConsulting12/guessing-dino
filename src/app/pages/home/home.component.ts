@@ -42,6 +42,10 @@ export class HomeComponent implements OnInit {
     this.profiles.setVoiceEnabled(!profile.voiceEnabled);
   }
 
+  toggleSound(profile: { soundEnabled: boolean }): void {
+    this.profiles.setSoundEnabled(!profile.soundEnabled);
+  }
+
   ngOnInit(): void {
     if (!this.profiles.hasProfiles()) {
       void this.router.navigate(['/setup']);

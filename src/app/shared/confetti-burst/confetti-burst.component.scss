@@ -1,0 +1,49 @@
+.confetti-layer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 40;
+}
+
+.confetti-bit {
+  position: absolute;
+  top: -12px;
+  animation-name: confetti-fall;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation-fill-mode: forwards;
+}
+
+.confetti-rect {
+  width: 10px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.confetti-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.confetti-star {
+  font-size: 18px;
+  line-height: 1;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(var(--spin));
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(var(--drift), 110vh, 0) rotate(calc(var(--spin) + 360deg));
+    opacity: 0.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .confetti-bit {
+    animation: none !important;
+  }
+}

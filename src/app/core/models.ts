@@ -33,6 +33,7 @@ export type UserProfile = {
   displayName: string;
   difficulty: Difficulty;
   voiceEnabled: boolean;
+  soundEnabled: boolean;
   createdAt: string;
   progress: ProfileProgress;
 };

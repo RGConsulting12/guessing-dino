@@ -1,0 +1,18 @@
+<div class="confetti-layer" aria-hidden="true">
+  @for (bit of bits; track bit.id) {
+    <span
+      class="confetti-bit confetti-{{ bit.shape }}"
+      [style.left.%]="bit.left"
+      [style.background]="bit.shape === 'star' ? 'transparent' : bit.color"
+      [style.color]="bit.color"
+      [style.animationDelay.s]="bit.delay"
+      [style.animationDuration.s]="bit.duration"
+      [style.--drift]="bit.drift + 'px'"
+      [style.--spin]="bit.rotate + 'deg'"
+    >
+      @if (bit.shape === 'star') {
+        ✦
+      }
+    </span>
+  }
+</div>

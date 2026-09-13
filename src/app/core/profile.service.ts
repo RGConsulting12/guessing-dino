@@ -31,12 +31,14 @@ function createProfile(
   displayName: string,
   difficulty: Difficulty,
   voiceEnabled: boolean,
+  soundEnabled: boolean,
 ): UserProfile {
   return {
     id: newId(),
     displayName,
     difficulty,
     voiceEnabled,
+    soundEnabled,
     createdAt: new Date().toISOString(),
     progress: defaultProgress(difficulty),
   };
@@ -67,7 +69,12 @@ export class ProfileService {
         return [];
       }
       const parsed = JSON.parse(raw) as UserProfile[];
-      return Array.isArray(parsed) ? parsed : [];
+      return Array.isArray(parsed)
+        ? parsed.map((profile) => ({
+            ...profile,
+            soundEnabled: profile.soundEnabled ?? true,
+          }))
+        : [];
     } catch {
       return [];
     }
@@ -108,11 +115,13 @@ export class ProfileService {
     displayName: string,
     difficulty: Difficulty,
     voiceEnabled: boolean,
+    soundEnabled = true,
   ): UserProfile {
     const profile = createProfile(
       sanitizeName(displayName) || 'Explorer',
       difficulty,
       voiceEnabled,
+      soundEnabled,
     );
     const profiles = [...this.profilesSubject.value, profile];
     this.persistProfiles(profiles);
@@ -131,6 +140,10 @@ export class ProfileService {
 
   setVoiceEnabled(enabled: boolean): void {
     this.updateActive((profile) => ({ ...profile, voiceEnabled: enabled }));
+  }
+
+  setSoundEnabled(enabled: boolean): void {
+    this.updateActive((profile) => ({ ...profile, soundEnabled: enabled }));
   }
 
   private updateActive(mutator: (profile: UserProfile) => UserProfile): void {
